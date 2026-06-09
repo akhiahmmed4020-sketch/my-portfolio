@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সোমনা জান্নাত আঁখি - প্রফেশনাল পোর্টফোলিও</title>
+    
+    <!-- গুগল ফন্টস -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- গ্লোবাল রিসেট ও ডাইনামিক থিম ভেরিয়েবল --- */
+        :root {
+            /* ব্যাকগ্রাউন্ডে এখন একটি ইউনিক ও ডাইনামিক গ্রেডিয়েন্ট সেট করা হয়েছে */
+            --bg-gradient: linear-gradient(135deg, #f5f2eb 0%, #edeae0 50%, #e6e2d7 100%);
+            --primary-color: #3f4e38;  /* ডিপ অলিভ সবুজ */
+            --secondary-color: #2b3a27; /* ডার্ক অলিভ */
+            --accent-color: #d4af37;    /* গোল্ডেন টাচ */
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --card-bg: #faf9f5;        /* নরম ক্রিম কালার */
+            --border-color: #dfdac0;   
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--bg-gradient); /* ডাইনামিক গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
+            background-attachment: fixed;   /* স্ক্রল করার সময় ব্যাকগ্রাউন্ডটি স্থির থেকে প্রিমিয়াম লুক দেবে */
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 60px; /* টপ গ্যাপ কমানো হয়েছে */
+            overflow-x: hidden;
+        }
+
+        /* --- হেডার ও নেভিগেশন বার --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(245, 242, 235, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--accent-color); }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--secondary-color); }
+
+        /* --- সেকশনগুলোর মধ্যকার দূরত্ব আরও কমানো হলো (Section Spacing) --- */
+        section {
+            width: 100%;
+            max-width: 1000px;
+            padding: 25px 20px; /* ২৫ পিক্সেল করা হয়েছে যাতে একটির পর আরেকটি খুব কাছাকাছি থাকে */
+        }
+
+        /* --- সেকশন ১: হিরো এরিয়া --- */
+        .hero-section { padding-top: 15px; }
+
+        .portfolio-container {
+            position: relative;
+            width: 100%;
+            background-color: rgba(250, 249, 245, 0.6); /* হালকা গ্লাস ইফেক্ট */
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px 45px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .portfolio-container::before, .portfolio-container::after {
+            content: '••••\A••••\A••••\A••••';
+            white-space: pre;
+            font-family: monospace;
+            font-size: 10px;
+            color: #c8c2a6;
+            position: absolute;
+            line-height: 1.5;
+        }
+        .portfolio-container::before { top: 20px; right: 20px; }
+        .portfolio-container::after { bottom: 20px; left: 20px; }
+
+        .left-content { flex: 1; min-width: 400px; }
+        .welcome-text { font-family: 'Playfair Display', serif; font-size: 24px; font-style: italic; color: var(--secondary-color); margin-bottom: -5px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 700; color: var(--secondary-color); line-height: 1.1; margin-bottom: 15px; }
+        .intro-desc { font-size: 16px; line-height: 1.6; color: #4a5d4e; margin-bottom: 20px; max-width: 450px; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px; background-color: var(--primary-color); color: white;
+            padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px;
+            margin-bottom: 25px; box-shadow: 0 4px 12px rgba(63, 78, 56, 0.15); transition: all 0.3s ease; cursor: pointer;
+        }
+        .btn-primary:hover { background-color: #4d5f45; transform: translateY(-2px); }
+
+        .features-row { display: flex; gap: 20px; margin-bottom: 5px; flex-wrap: wrap; }
+        .feature-item { text-align: center; font-size: 12px; color: var(--primary-color); font-weight: 600; width: 75px; transition: all 0.3s ease; cursor: pointer; }
+        .feature-icon { width: 40px; height: 40px; background: #e9e5d3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px auto; font-size: 15px; color: var(--primary-color); transition: all 0.3s ease; }
+        .feature-item:hover { transform: translateY(-2px); }
+
+        .bottom-bar { width: 100%; background-color: var(--primary-color); color: white; padding: 12px 22px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; margin-top: 10px; }
+        .bottom-bar a { color: white; text-decoration: none; }
+
+        .right-content { position: relative; display: flex; justify-content: center; align-items: center; }
+        .image-wrapper { position: relative; width: 280px; height: 280px; border-radius: 50%; border: 4px solid var(--accent-color); padding: 5px; background: var(--card-bg); box-shadow: 0 8px 20px rgba(0,0,0,0.05); transition: all 0.4s ease; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .image-wrapper:hover { transform: scale(1.02); }
+        .leaf-decor { position: absolute; bottom: -5px; right: -5px; width: 70px; height: 70px; background: radial-gradient(circle, #7d9a74 30%, var(--primary-color) 100%); border-radius: 50% 0 50% 50%; transform: rotate(-15deg); z-index: 2; }
+
+        .btn-work { position: absolute; bottom: -55px; right: 10px; background: var(--card-bg); border: 2px solid var(--primary-color); color: var(--primary-color); padding: 8px 18px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; }
+        .btn-work:hover { background: var(--primary-color); color: white; transform: translateX(4px); }
+
+        /* --- সেকশন শিরোনাম ডিজাইন --- */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px; 
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 50px; height: 3px; background-color: var(--accent-color); border-radius: 2px; }
+
+        /* --- সেকশন ২: ABOUT ME --- */
+        .about-container { width: 100%; background-color: rgba(250, 249, 245, 0.4); border: 2px solid var(--border-color); border-radius: 12px; padding: 40px; display: flex; justify-content: space-between; align-items: center; gap: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.005); flex-wrap: wrap-reverse; }
+        .about-left { flex: 1; min-width: 350px; }
+        .about-text { font-size: 17px; line-height: 1.7; color: var(--text-dark); text-align: justify; }
+        .about-right { flex: 1; display: flex; justify-content: center; align-items: center; min-width: 300px; }
+        .about-image-wrapper { width: 280px; height: 280px; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.05); border: 4px solid var(--card-bg); }
+        .about-img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- সেকশন ৩: MY BACKGROUND --- */
+        .background-container { width: 100%; background-color: rgba(250, 249, 245, 0.4); border: 2px solid var(--border-color); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.005); }
+        .bg-content-box { display: flex; flex-direction: column; gap: 25px; }
+        .bg-block { display: flex; flex-direction: column; gap: 10px; }
+        .bg-sub-title { font-size: 20px; font-weight: 700; color: var(--primary-color); display: flex; align-items: center; gap: 6px; }
+        .bg-sub-title::before { content: '↳'; font-size: 22px; color: var(--accent-color); font-weight: bold; }
+        .bg-list { list-style: none; display: flex; flex-direction: column; gap: 10px; padding-left: 20px; }
+        .bg-list-item { font-size: 16px; color: var(--secondary-color); line-height: 1.5; padding: 10px 16px; background-color: rgba(227, 222, 195, 0.15); border-left: 4px solid var(--primary-color); border-radius: 0 8px 8px 0; transition: all 0.3s ease; }
+        .bg-list-item:hover { transform: translateX(4px); background-color: rgba(63, 78, 56, 0.06); }
+
+        /* --- সেকশন ৪: MY WORK --- */
+        .work-container { width: 100%; background-color: rgba(250, 249, 245, 0.4); border: 2px solid var(--border-color); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.005); }
+        .work-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; }
+        .work-card { position: relative; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 9; box-shadow: 0 3px 8px rgba(0,0,0,0.01); cursor: pointer; transition: all 0.3s ease; }
+        .work-sample-img { width: 100%; height: 100%; object-fit: cover; transition: all 0.4s ease; }
+        .work-card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(63, 78, 56, 0.1); border-color: var(--accent-color); }
+        .work-card::after { content: '🔍 Preview'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(43, 58, 39, 0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: white; opacity: 0; transition: all 0.3s ease; }
+        .work-card:hover::after { opacity: 1; }
+
+        /* --- সেকশন ৫: MY CLIENT REVIEWS --- */
+        .reviews-container { width: 100%; background-color: rgba(250, 249, 245, 0.4); border: 2px solid var(--border-color); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.005); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; width: 100%; } 
+        .review-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.01); display: flex; flex-direction: column; gap: 8px; transition: all 0.3s ease; }
+        .review-card.large { grid-column: span 3; }
+        .review-card.small { grid-column: span 2; }
+        .review-card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(63, 78, 56, 0.06); border-color: var(--primary-color); }
+        .client-header { display: flex; align-items: center; gap: 10px; }
+        .client-avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #e9e5d3; color: var(--primary-color); font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 1px solid #c8c2a6; }
+        .client-info-text { display: flex; flex-direction: column; }
+        .client-name { font-weight: 700; font-size: 15px; color: #1a2418; }
+        .client-country { font-size: 12px; color: #666; }
+        .review-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #888; }
+        .stars { color: #ffb400; font-size: 12px; letter-spacing: 1px; }
+        .rating-number { font-weight: 700; color: #1a2418; }
+        .review-text { font-size: 14px; line-height: 1.5; color: var(--text-dark); font-style: italic; margin: 3px 0; flex-grow: 1; }
+        .review-footer { display: flex; border-top: 1px solid #e6e2d8; padding-top: 10px; margin-top: 3px; }
+        .footer-item { flex: 1; display: flex; flex-direction: column; gap: 2px; font-size: 12px; }
+        .footer-item.border-right { border-right: 1px solid #e6e2d8; }
+        .footer-label { color: #888; }
+        .footer-value { font-weight: 600; color: var(--secondary-color); }
+
+        /* --- সেকশন ৬: REACH OUT TO ME --- */
+        .contact-container { width: 100%; background-color: rgba(250, 249, 245, 0.4); border: 2px solid var(--border-color); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.005); }
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 5px; }
+        .contact-item { display: flex; flex-direction: column; gap: 4px; background: rgba(255,255,255,0.3); padding: 15px; border-radius: 8px; border: 1px dashed var(--border-color); }
+        .contact-label { font-size: 17px; font-weight: 700; color: #1a2418; }
+        .contact-value { font-size: 15px; color: #4a5d4e; line-height: 1.4; word-break: break-word; }
+        .collab-wrapper { display: flex; justify-content: flex-end; align-items: center; margin-top: 15px; }
+        .collab-link { display: inline-flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 700; color: #1a2418; text-decoration: none; transition: all 0.3s ease; }
+        .collab-link::before { content: '↳'; font-size: 20px; color: var(--secondary-color); }
+        .collab-link:hover { color: var(--primary-color); transform: translateX(4px); }
+
+        /* --- ফুটার --- */
+        footer { width: 100%; text-align: center; padding: 20px; border-top: 1px solid var(--border-color); font-size: 13px; color: #888; }
+
+        /* --- রেসপনসিভ ডিজাইন --- */
+        @media (max-width: 950px) {
+            body { padding-top: 55px; }
+            .nav-links { gap: 12px; }
+            section { padding: 20px 15px; }
+            .portfolio-container, .about-container, .background-container, .work-container, .reviews-container, .contact-container { padding: 30px 15px; }
+            
+            h1 { font-size: 38px; }
+            .section-title { font-size: 32px; text-align: center; width: 100%; }
+            .section-title::after { left: 50%; transform: translateX(-50%); }
+            
+            .left-content { min-width: 100%; text-align: center; }
+            .intro-desc { margin: 0 auto 15px auto; }
+            .features-row { justify-content: center; }
+            .bottom-bar { flex-direction: column; text-align: center; }
+            .btn-work { position: relative; bottom: auto; right: auto; margin: 20px auto 0 auto; width: max-content; }
+            
+            .about-container { text-align: center; justify-content: center; }
+            .about-left { min-width: 100%; }
+            .about-image-wrapper { width: 240px; height: 240px; }
+
+            .work-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .review-card.large, .review-card.small { grid-column: span 2; }
+
+            .contact-grid { grid-template-columns: 1fr; gap: 12px; text-align: center; }
+            .collab-wrapper { justify-content: center; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .work-grid, .reviews-grid { grid-template-columns: 1fr; }
+            .review-card.large, .review-card.small { grid-column: span 1; }
+            .portfolio-container { padding: 20px 12px; }
+            h1 { font-size: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার এবং নেভিগেশন বার -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">SOMONA<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#background">Background</a></li>
+                <li><a href="#work">My Work</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- সেকশন ১: হোম / হিরো এরিয়া -->
+    <section id="home" class="hero-section">
+        <div class="portfolio-container">
+            <div class="left-content">
+                <div class="welcome-text">Welcome to</div>
+                <h1>My Work<br>Portfolio</h1>
+                <p class="intro-desc">ডেটা এন্ট্রি বিশেষজ্ঞ হিসেবে আমি নির্ভুলতা, দক্ষতা এবং উচ্চমানের কাজ প্রদানে প্রতিশ্রুতিবদ্ধ, যা আপনার ব্যবসাকে আরও এগিয়ে নিতে সাহায্য করবে।</p>
+                
+                <a href="#contact" class="btn-primary">💻 Data Entry Expert</a>
+
+                <div class="features-row">
+                    <div class="feature-item"><div class="feature-icon">✔</div>Accurate Data</div>
+                    <div class="feature-item"><div class="feature-icon">⏱</div>On-Time Delivery</div>
+                    <div class="feature-item"><div class="feature-icon">🔒</div>Confidential</div>
+                    <div class="feature-item"><div class="feature-icon">🎯</div>Detail Oriented</div>
+                </div>
+            </div>
+
+            <div class="right-content">
+                <div class="image-wrapper">
+                    <img src="somona.jpg" alt="সোমনা জান্নাত আঁখি" class="profile-img">
+                    <div class="leaf-decor"></div>
+                </div>
+                <a href="#contact" class="btn-work">↗ Work with me today</a>
+            </div>
+
+            <div class="bottom-bar">
+                <div>✉ <a href="mailto:akhiahmmed120@gmail.com">akhiahmmed120@gmail.com</a></div>
+                <div>🌍 Available Worldwide</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- সেকশন ২: আমার সম্পর্কে -->
+    <section id="about">
+        <div class="about-container">
+            <div class="about-left">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">
+                    I am a Data Entry Expert with 3 years of experience in accurate and efficient data management. Skilled in Excel, web research, copy-paste, PDF conversion, and typing with a strong focus on quality and client satisfaction.
+                </p>
+            </div>
+            <div class="about-right">
+                <div class="about-image-wrapper">
+                    <img src="about-work.jpg" alt="Data Entry Work" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- সেকশন ৩: ব্যাকগ্রাউন্ড -->
+    <section id="background">
+        <div class="background-container">
+            <h2 class="section-title">My Background</h2>
+            <div class="bg-content-box">
+                <div class="bg-block">
+                    <div class="bg-sub-title">Education</div>
+                    <ul class="bg-list">
+                        <li class="bg-list-item">Trained in <strong>Data Entry & Excel</strong></li>
+                        <li class="bg-list-item">Skilled in <strong>Web Research</strong> and <strong>PDF Conversion</strong></li>
+                    </ul>
+                </div>
+                <div class="bg-block">
+                    <div class="bg-sub-title">Work Experience</div>
+                    <ul class="bg-list">
+                        <li class="bg-list-item"><strong>3 Years of Experience</strong> as a Data Entry Expert</li>
+                        <li class="bg-list-item">Worked on <strong>Excel, Data Management</strong>, and <strong>Copy-Paste Tasks</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- সেকশন ৪: আমার কাজ -->
+    <section id="work">
+        <div class="work-container">
+            <h2 class="section-title">My Work</h2>
+            <div class="work-grid">
+                <div class="work-card"><img src="sample1.jpg" alt="Sample 1" class="work-sample-img"></div>
+                <div class="work-card"><img src="sample2.jpg" alt="Sample 2" class="work-sample-img"></div>
+                <div class="work-card"><img src="sample3.jpg" alt="Sample 3" class="work-sample-img"></div>
+                <div class="work-card"><img src="sample4.jpg" alt="Sample 4" class="work-sample-img"></div>
+                <div class="work-card"><img src="sample5.jpg" alt="Sample 5" class="work-sample-img"></div>
+                <div class="work-card"><img src="sample6.jpg" alt="Sample 6" class="work-sample-img"></div>
+                <div class="work-card"><img src="sample7.jpg" alt="Sample 7" class="work-sample-img"></div>
+                <div class="work-card"><img src="sample8.jpg" alt="Sample 8" class="work-sample-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- সেকশন ৫: ক্লায়েন্ট রিভিউ -->
+    <section id="reviews">
+        <div class="reviews-container">
+            <h2 class="section-title">My Client Reviews</h2>
+            <div class="reviews-grid">
+                <!-- রিভিউ ১ -->
+                <div class="review-card large">
+                    <div class="client-header">
+                        <div class="client-avatar">B</div>
+                        <div class="client-info-text">
+                            <span class="client-name">bilalkarsifi</span>
+                            <span class="client-country">🇯🇵 Japan</span>
+                        </div>
+                    </div>
+                    <div class="review-meta">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-number">5</span>
+                        <span>• 5 days ago</span>
+                    </div>
+                    <p class="review-text">"thanks! as always"</p>
+                    <div class="review-footer">
+                        <div class="footer-item border-right">
+                            <span class="footer-label">Price</span>
+                            <span class="footer-value">Up to $50</span>
+                        </div>
+                        <div class="footer-item" style="padding-left: 15px;">
+                            <span class="footer-label">Duration</span>
+                            <span class="footer-value">1 day</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- রিভিউ ২ -->
+                <div class="review-card large">
+                    <div class="client-header">
+                        <div class="client-avatar">S</div>
+                        <div class="client-info-text">
+                            <span class="client-name">sethbracewell</span>
+                            <span class="client-country">🇺🇸 United States</span>
+                        </div>
+                    </div>
+                    <div class="review-meta">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-number">5</span>
+                        <span>• 1 week ago</span>
+                    </div>
+                    <p class="review-text">"Thank you for turning this around so quickly!"</p>
+                    <div class="review-footer">
+                        <div class="footer-item border-right">
+                            <span class="footer-label">Price</span>
+                            <span class="footer-value">$50-$100</span>
+                        </div>
+                        <div class="footer-item" style="padding-left: 15px;">
+                            <span class="footer-label">Duration</span>
+                            <span class="footer-value">2 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- রিভিউ ৩ -->
+                <div class="review-card small">
+                    <div class="client-header">
+                        <div class="client-avatar" style="background-color: #f7d6c8; color: #b85c37;">P</div>
+                        <div class="client-info-text">
+                            <span class="client-name">paulrathno</span>
+                            <span class="client-country">🇦🇺 Australia</span>
+                        </div>
+                    </div>
+                    <div class="review-meta">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-number">5</span>
+                        <span>• 4 days ago</span>
+                    </div>
+                    <p class="review-text">"She did her task perfectly."</p>
+                    <div class="review-footer">
+                        <div class="footer-item border-right">
+                            <span class="footer-label">Price</span>
+                            <span class="footer-value">Up to $50</span>
+                        </div>
+                        <div class="footer-item" style="padding-left: 12px;">
+                            <span class="footer-label">Duration</span>
+                            <span class="footer-value">4 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- রিভিউ ৪ -->
+                <div class="review-card small">
+                    <div class="client-header">
+                        <div class="client-avatar" style="background-color: #7d2238; color: white;">L</div>
+                        <div class="client-info-text">
+                            <span class="client-name">lawalzabbau54</span>
+                            <span class="client-country">🇺🇸 United States</span>
+                        </div>
+                    </div>
+                    <div class="review-meta">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-number">5</span>
+                        <span>• 3 months ago</span>
+                    </div>
+                    <p class="review-text">"Fast delivery and excellent output - thank you"</p>
+                    <div class="review-footer">
+                        <div class="footer-item border-right">
+                            <span class="footer-label">Price</span>
+                            <span class="footer-value">Up to $50</span>
+                        </div>
+                        <div class="footer-item" style="padding-left: 12px;">
+                            <span class="footer-label">Duration</span>
+                            <span class="footer-value">3 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- রিভিউ ৫ -->
+                <div class="review-card small">
+                    <div class="client-header">
+                        <div class="client-avatar" style="background-color: #485c2b; color: white;">S</div>
+                        <div class="client-info-text">
+                            <span class="client-name">sublime_trading</span>
+                            <span class="client-country">🇬🇧 United Kingdom</span>
+                        </div>
+                    </div>
+                    <div class="review-meta">
+                        <span class="stars">★★★★★</span>
+                        <span class="rating-number">5</span>
+                        <span>• 2 days ago</span>
+                    </div>
+                    <p class="review-text">"Great service"</p>
+                    <div class="review-footer">
+                        <div class="footer-item border-right">
+                            <span class="footer-label">Price</span>
+                            <span class="footer-value">Up to $50</span>
+                        </div>
+                        <div class="footer-item" style="padding-left: 12px;">
+                            <span class="footer-label">Duration</span>
+                            <span class="footer-value">3 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- সেকশন ৬: যোগাযোগ -->
+    <section id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Reach Out<br>to Me</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-label">Address</span>
+                    <span class="contact-value">Dhaka Gazipur Sreepur</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">akhiahmmed120@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <span class="contact-value">01305708942</span>
+                </div>
+            </div>
+
+            <div class="collab-wrapper">
+                <a href="mailto:akhiahmmed120@gmail.com" class="collab-link">Let's collaborate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ফুটার কপিরাইট সেকশন -->
+    <footer>
+        <p>&copy; 2026 Somona Jannat Akhi. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
